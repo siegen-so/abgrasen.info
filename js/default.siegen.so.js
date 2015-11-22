@@ -17,16 +17,15 @@ $('#play').click(function() {
 */
 
 var people = {
-  'juli': {'cc': 'CC-BY Hallo <a href="http://silsha.me">silsha</a>'},
-  'bennet': {'text': 'BACK MAL, BENNET!', 'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'},
-  'kajsa': {'text': 'Ach Kajsa! <3', 'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'},
-  'leo': {'text': 'LEO, DU ALTER MANN!', 'cc': 'Dein Geburtstag ist vorbei, bau jetzt endlich!'},
-  'nini': {'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'},
-  'paul': {'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'}
+  'alan': {'cc': 'Alan Turing, Ehrenkollektivist', 'title': 'alan turing'},
+  'wau': {'cc': 'Wau Holland, Ehrenkollektivist', 'title': 'wau holland'},
+  'emmy': {'cc': 'Emmy Noether, Ehrenkollektivist', 'title': 'emmy noether'},
+  'leonhard': {'cc': 'Leonhard Euler, Ehrenkollektivist', 'title': 'leonhard euler'},
 };
 
 function checkBg() {
-  if ($('#tile0').css('background-image') == $('#tile1').css('background-image') && $('#tile1').css('background-image') == $('#tile2').css('background-image')) {
+  if (	$('#tile0').css('background-image') == $('#tile1').css('background-image') 
+	&& $('#tile1').css('background-image') == $('#tile2').css('background-image')) {
     $('h1').html('GMAHDE WIESN');
   }
 }
@@ -143,7 +142,7 @@ var showOverview = function() {
               } else {
                 $(this).css('background-image','url("img/'+persons[0]+'.jpg")');
               }
-              checkBg();
+              //checkBg();
               $('#tile'+j).parent().attr('href','http://'+persons[0]+'.abgrasen.info');
             }).fadeTo('slow', 1);
           }
@@ -156,14 +155,19 @@ var showOverview = function() {
 $(document).ready(function() {
   var hashString = $(location).attr('hash').substring(1, $(location).attr('hash').length);
   var ssl = (window.location.href.indexOf('https://') >= 0);
-  var domainString = window.location.href.split(ssl ? 'https://' : 'http://')[1].split('.');
-
+  var domainString = window.location.href.split(ssl ? 'https://' : 'http://')[1];
+  domainString=domainString.split('.');
+  var text1 = domainString.join(' '); 
+  var l = text1.length
+  var text2 = text1.trim().substring(0,l-10)
+ 
   if (domainString.length < 3) {
     showOverview();
     return;
   }
 
   var personName = domainString[0];
+  personName=text2;
   $('#name').html(personName);
 
   // Try loading image
@@ -184,24 +188,26 @@ $(document).ready(function() {
       $('#mainh1').toggle();
       $('#chopchop').toggle();
     }, 5000);
+/*
     setTimeout(function() {
       pong();
     }, 10000);
+*/
   }, 30000);
 
   // Only continue if more details on person available
   if (!(personName in people)) {
-    $('title').html(personName.toUpperCase()+', BAUEN!!!');
+    $('title').html(personName.toUpperCase()+' SIEGEN, SO?');
     return;
   }
 
   var person = people[personName];
 
   if ('text' in person) {
-    $('h1.cover-heading').html(person['text']);
-    $('title').html(person['text']);
+    $('h1.cover-heading').html(person['title']);
+    $('title').html(person['title']);
   } else {
-    $('title').html(personName.toUpperCase()+', BAUEN!!!');
+    $('title').html(personName.toUpperCase()+' SIEGEN, S0!');
   }
 
   if ('cc' in person) {
