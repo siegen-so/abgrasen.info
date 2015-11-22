@@ -11,8 +11,13 @@ $('#play').click(function() {
   return false;
 });
 
+/*
+  cc: Copyright Hinweis
+  text: In der Mitte der Seite
+*/
+
 var people = {
-  'juli': {'cc': 'CC-BY <a href="http://silsha.me">silsha</a>'},
+  'juli': {'cc': 'CC-BY Hallo <a href="http://silsha.me">silsha</a>'},
   'bennet': {'text': 'BACK MAL, BENNET!', 'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'},
   'kajsa': {'text': 'Ach Kajsa! <3', 'cc': 'CC-BY <a href="http://lutoma.org">lutoma</a>'},
   'leo': {'text': 'LEO, DU ALTER MANN!', 'cc': 'Dein Geburtstag ist vorbei, bau jetzt endlich!'},
@@ -46,7 +51,7 @@ function pong() {
         'display':'none'
     }).appendTo( 'body' ).fadeIn(100).delay(1000).fadeOut(500, function(){
       $(this).remove();
-      pong(); 
+      //$ pong(); 
     }); 
 }
 
