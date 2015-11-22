@@ -1,4 +1,4 @@
-abgrasen.info
+default-siegen-so
 =============
 
-abgrasen.info is an important tool for goldfishing.
+This is intended to be an entertaining landing- / catch-all- / welcome-page.
